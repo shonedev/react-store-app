@@ -1,0 +1,16 @@
+header {
+  grid-area: header;
+  color: var(--clr-white);
+  background-color: var(--clr-dark-blue);
+  a {
+    padding: $spacing-xs;
+  }
+
+  .brand {
+    @include fluid(font-size, $min-screen, $max-screen, 2.6rem, 3.6rem);
+    font-weight: bold;
+    &:hover {
+      color: inherit;
+    }
+  }
+}

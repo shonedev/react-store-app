@@ -1,0 +1,194 @@
+@mixin screen($point) {
+    @if $point == 'xs' {
+        @media (min-width: $breakpoint-xs) { @content; }
+    }
+    @else if $point == 'sm' {
+        @media (min-width: $breakpoint-sm) { @content; }
+    }
+    @else if $point == 'md' {
+        @media (min-width: $breakpoint-md) { @content; }
+    }
+    @else if $point == 'lg' {
+        @media (min-width: $breakpoint-lg) { @content; }
+    }
+    @else if $point == 'xl' {
+        @media (min-width: $breakpoint-xl) { @content; }
+    }
+    @else if $point == 'xxl' {
+        @media (min-width: $breakpoint-xxl) { @content; }
+    }
+}
+@mixin screen-max($point) {
+    @if $point == 'xs' {
+        @media (max-width: $breakpoint-xs) { @content; }
+    }
+    @else if $point == 'sm' {
+        @media (max-width: $breakpoint-sm) { @content; }
+    }
+    @else if $point == 'md' {
+        @media (max-width: $breakpoint-md) { @content; }
+    }
+    @else if $point == 'lg' {
+        @media (max-width: $breakpoint-lg) { @content; }
+    }
+    @else if $point == 'xl' {
+        @media (max-width: $breakpoint-xl) { @content; }
+    }
+    @else if $point == 'xxl' {
+        @media (max-width: $breakpoint-xxl) { @content; }
+    }
+}
+// use:
+//  @include screen('sm') { color: blue; }
+
+/* ---------------FLUID--------------------- */
+// @function strip-unit($value) {
+//     @return $value / ($value * 0 + 1);
+// }
+@mixin fluid($prop, $min-screen, $max-screen, $min-dimension, $max-dimension, $isImportant: false) {
+    @if $isImportant {
+        #{$prop}: calc(#{$min-dimension} + #{strip-unit($max-dimension - $min-dimension)} * ((100vw - #{$min-screen}) / #{strip-unit($max-screen - $min-screen)})) !important;
+    }
+    @else {
+        #{$prop}: calc(#{$min-dimension} + #{strip-unit($max-dimension - $min-dimension)} * ((100vw - #{$min-screen}) / #{strip-unit($max-screen - $min-screen)}));
+    }
+    @media screen and (max-width: $min-screen) {
+        @if $isImportant {
+            #{$prop}: $min-dimension;
+        }
+        @else {
+            #{$prop}: $min-dimension;
+        }
+    }
+    @media screen and (min-width: $max-screen) {
+        @if $isImportant {
+            #{$prop}: $max-dimension;
+        }
+        @else {
+            #{$prop}: $max-dimension;
+        }
+    }
+}
+/* USAGE
+@include fluid(font-size, $md-start, $max-screen, 10px, 18px);
+*/
+
+/*---------------FLUID FONT---------------------*/
+//
+// Viewport sized typography with minimum and maximum values
+//
+// @author Eduardo Boucas (@eduardoboucas)
+//
+// @param {Number}   $responsive  - Viewport-based size
+// @param {Number}   $min         - Minimum font size (px)
+// @param {Number}   $max         - Maximum font size (px)
+//                                  (optional)
+// @param {Number}   $fallback    - Fallback for viewport-
+//                                  based units (optional)
+//
+// @example scss - 5vw font size (with 50px fallback), 
+//                 minumum of 35px and maximum of 150px
+//  @include responsive-font(5vw, 35px, 150px, 50px);
+//
+@mixin responsive-font($responsive, $min, $max: false, $fallback: false) {
+  $responsive-unitless: $responsive / ($responsive - $responsive + 1);
+  $dimension: if(unit($responsive) == 'vh', 'height', 'width');
+  $min-breakpoint: $min / $responsive-unitless * 100;
+  
+  @media (max-#{$dimension}: #{$min-breakpoint}) {
+    font-size: $min;
+  }
+  
+  @if $max {
+    $max-breakpoint: $max / $responsive-unitless * 100;
+    
+    @media (min-#{$dimension}: #{$max-breakpoint}) {
+      font-size: $max;
+    }
+  }
+  
+  @if $fallback {
+    font-size: $fallback;
+  }
+  
+  font-size: $responsive;
+}
+
+
+/*---------------BEM---------------------*/
+
+@mixin element($element) {
+    &__#{$element} {
+        @content;
+    }
+}
+@mixin modifier($modifier) {
+    &--#{$modifier} {
+        @content;
+    }
+}
+@mixin self($scope, $element) {
+    #{$scope}__#{$element} {
+        @content;
+    }
+}
+@mixin e($element) {
+    @include element($element) {
+        @content;
+    }
+}
+@mixin m($modifier) {
+    @include modifier($modifier) {
+        @content;
+    }
+}
+@mixin s($scope, $element) {
+    @include self($scope, $element) {
+        @content;
+    }
+}
+/*--------------FLEX--------------------*/
+@mixin flex ($align: initial, $justify: initial) {
+    display: flex;
+    align-items: $align;
+    justify-content: $justify;
+}
+/*--------------POSITION ABSOLUTE----------------------*/
+// @mixin position-abs($top:0, $left: 0, $width: 100%, $height: 100%, ) {
+//     position: absolute;
+//     top: $top;
+//     left: $left;
+//     width: $width;
+//     height: $height;
+// }
+@mixin position-abs($top:0, $right: 0, $bottom: 0, $left: 0) {
+    position: absolute;
+    top: $top;
+    right: $right;
+    bottom: $bottom;
+    left: $left;
+}
+/*----------TRANSITION--------*/
+@mixin glob-transition($prop-name:all, $duration:.4s, $timing:ease-in-out, $delay:0) {  
+    transition-property: $prop-name;
+    transition-duration: $duration;
+    transition-timing-function: $timing;
+    transition-delay: $delay;
+}
+/*---------OVERLAY--------------------*/
+@mixin overlay($color: #000000, $opacity: .5) {
+    background-color: $color;
+    opacity: $opacity;
+    @include position-abs(0,0,0,0);
+    z-index: $z-overlay;
+}
+@mixin divider {
+    content: "";
+    height: 1px;
+    background: var($c-divider);
+    width: 3.3vw;
+    margin-left: 2.2vw;
+}
+
+
+

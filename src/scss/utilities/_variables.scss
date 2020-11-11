@@ -1,0 +1,114 @@
+$min-screen: 320px !default;
+$max-screen: 1920px !default;
+// BREAKPOINTS
+$breakpoint-xs: 420px;
+$breakpoint-sm: 576px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 992px;
+$breakpoint-xl: 1200px;
+$breakpoint-xxl: 1500px;
+
+// SPACING
+$spacing-xxs: 4px;
+$spacing-xs: 10px;
+$spacing-sm: 16px;
+$spacing-md: 24px;
+$spacing-lg: 32px;
+$spacing-xl: 48px;
+$spacing-xxl: 64px;
+
+// VARIABLES
+
+// $colors: (
+//     c--orange: #FAA71B,
+//     c--black: #010101,
+//     c--gray: #484c4d,
+//     c--gray-light: #dddddd,
+//     c--gray-dark: #1d1d1d,
+//     c--red-mafia: #f54437,
+// );
+
+:root {
+  // @each $name, $color in $colors {
+  //     --c-#{$name}: #{$color};
+  // }
+
+  --clr-white: #f2f0eb;
+  --clr-red: #f13c20;
+  --clr-orange: #ff8000;
+  --clr-blue: #3271b0;
+  --clr-dark-blue: #203040;
+  --clr-yellow: #efe2ba;
+  --clr-brown: #d79922;
+  --clr-black: #222;
+  --clr-gray: #8a8a8a;
+  --clr-light-gray: #f8f8f8;
+
+  --clr-primary: var(--clr-brown);
+  --clr-secondary: var(--clr-blue);
+
+  --clr-paragraf: var(--clr-brown);
+
+  --clr-nav: var(--clr-white);
+  --clr-hover: var(--clr-orange);
+
+  --clr-btn: var(--clr-blue);
+  --clr-btn-hover: var(--clr-brown);
+
+  --ff-header: "Poppins", sans-serif;
+  --ff-text: "Roboto", sans-serif;
+
+  --transition: all 0.4s linear;
+  --spacing: 0.4rem;
+  --radius: 0.5rem;
+
+  --header-height: 9rem;
+  --footer-height: 9rem;
+
+  --light-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  --dark-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  --text-shadow-dark: 0 8px 8px #00000070;
+  --text-shadow-light: 0 0.7px 0.7px #ffffff70;
+
+  --max-width: 1400px;
+  --fixed-width: 620px;
+}
+//////////////// end :root ////////////////////////////
+
+//FONTS
+// $f-primary: 'Barlow', sans-serif;
+// $f-heading: 'BarlowCond', sans-serif;
+
+// COLORS
+$c-primary: #faa71b;
+$c-secondary: #010101;
+// COLOR OVERLAY
+$overlay-color: #000000 !default;
+$overlay-opacity: 0.5 !default;
+
+// $lighten: 10;
+// $darken: 25;
+// $color-orange: #FAA71B;
+// $color-black: #010101;
+
+/*----------------Z-INDEX---------------------*/
+$z-overlay: 1;
+$z-hero: 2;
+$z-section: 3;
+$z-header: 5;
+$z-nav-open: 5;
+$z-brand: 6;
+$z-social: 5;
+
+// $colors: (
+//     'orange': (
+//         base: $color-orange,
+//         light: lighten($color-orange, $lighten),
+//         dark: darken($color-orange, $darken),
+//     ),
+//     'black': (
+//         base: $color-black,
+//         light: lighten($color-black, $lighten),
+//         dark: darken($color-black, $darken),
+//     )
+// );

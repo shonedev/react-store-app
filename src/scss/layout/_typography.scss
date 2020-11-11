@@ -1,0 +1,71 @@
+// Typography
+// ––––––––––––––––––––––––––––––––––––––––––––––––––
+
+b,
+strong {
+  font-weight: bold;
+}
+
+p {
+  margin-top: 0;
+  margin-bottom: 0.2rem;
+  color: var(--clr-paragraf);
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  padding: 0;
+}
+
+.heading {
+  font-family: var(--ff-heading);
+  font-weight: bold;
+  line-height: 1.25;
+  // letter-spacing: .1rem;
+  color: currentColor;
+  // color: var(--clr-primary);
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  margin: 1rem 0;
+  @include m("xl") {
+    @include fluid(font-size, $min-screen, $max-screen, 40px, 100px);
+    // @include screen-max(md) {
+    //     @include fluid(font-size, $min-screen, $breakpoint-md, 36px, 60px);
+    // }
+  }
+  @include m("l") {
+    @include fluid(font-size, $min-screen, $max-screen, 34px, 52px);
+  }
+  @include m("m") {
+    @include fluid(font-size, $min-screen, $max-screen, 28px, 36px);
+  }
+  @include m("s") {
+    @include fluid(font-size, $min-screen, $max-screen, 18px, 20px);
+  }
+  @include m("xs") {
+    @include fluid(font-size, $min-screen, $max-screen, 16px, 18px);
+  }
+  @include m("uppercase") {
+    text-transform: uppercase;
+  }
+  &--light {
+    color: #ffffff !important;
+  }
+  &--primary {
+    color: $c-primary;
+  }
+  &--dark {
+    color: $c-secondary;
+  }
+}
+
+// .section {
+//     .heading {
+//         font-family: 'Slackey', cursive;
+//     }
+// }

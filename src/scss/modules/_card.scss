@@ -1,0 +1,31 @@
+.card {
+  border: 0.1rem solid var(--clr-gray);
+  border-radius: var(--radius);
+  margin: 1rem;
+  @include e("body") {
+    background-color: var(--clr-light-gray);
+    border-radius: var(--radius);
+    padding: 1rem;
+    & > * {
+      margin-bottom: 0.5rem;
+    }
+  }
+  @include e("title") {
+    @include fluid(font-size, $min-screen, $max-screen, 18px, 20px);
+    color: var(--clr-blue);
+    margin-bottom: 1.6rem;
+  }
+  @include e("rating") {
+    span {
+      margin: 0.1rem;
+      color: #f0c040;
+    }
+  }
+  @include e("price") {
+    color: var(--clr-dark-blue);
+    @include fluid(font-size, $min-screen, $max-screen, 20px, 22px);
+  }
+  .img {
+    border-radius: var(--radius);
+  }
+}
