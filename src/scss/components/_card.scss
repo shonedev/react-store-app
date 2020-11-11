@@ -19,6 +19,9 @@
     span {
       margin: 0.1rem;
       color: #f0c040;
+      &:nth-child(5) {
+        margin-right: 1rem !important;
+      }
     }
   }
   @include e("price") {
@@ -27,5 +30,8 @@
   }
   .img {
     border-radius: var(--radius);
+  }
+  @include e("reviews") {
+    color: var(--clr-dark-blue) !important;
   }
 }
